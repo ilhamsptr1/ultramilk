@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { card } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { getAssetPath } from "@/utils/paths";
 
 const TestimonialSection = () => {
   const vdRef = useRef<HTMLVideoElement[]>([]);
@@ -85,7 +86,7 @@ const TestimonialSection = () => {
               ref={(el) => {
                 if (el) vdRef.current[index] = el;
               }}
-              src={card.src}
+              src={getAssetPath(card.src)}
               playsInline
               muted
               loop
