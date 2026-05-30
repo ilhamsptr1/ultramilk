@@ -28,7 +28,7 @@ const TestimonialSection = () => {
       marginTop: "-140vh",
     });
 
-    gsap.ScrollTrigger.create({
+    (gsap as any).ScrollTrigger.create({
       trigger: ".testimonials-section",
       start: "top 200%",
       onEnter: () => setIsVisible(true),

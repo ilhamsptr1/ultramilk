@@ -11,7 +11,7 @@ const VideoPinSection = () => {
 
 
   useGSAP(() => {
-    gsap.ScrollTrigger.create({
+    (gsap as any).ScrollTrigger.create({
       trigger: ".vd-pin-section",
       start: "top 200%",
       onEnter: () => setIsVisible(true),
