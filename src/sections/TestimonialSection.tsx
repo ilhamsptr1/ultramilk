@@ -2,7 +2,10 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { card } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { getAssetPath } from "@/utils/paths";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const TestimonialSection = () => {
   const vdRef = useRef<HTMLVideoElement[]>([]);
@@ -28,8 +31,7 @@ const TestimonialSection = () => {
       marginTop: "-140vh",
     });
 
-    // @ts-expect-error: ScrollTrigger is not properly typed on the gsap object
-    gsap.ScrollTrigger.create({
+    ScrollTrigger.create({
       trigger: ".testimonials-section",
       start: "top 200%",
       onEnter: () => setIsVisible(true),

@@ -2,8 +2,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/sections/HeroSection";
 import gsap from "gsap";
-import { ScrollTrigger, ScrollSmoother } from "gsap/all";
-import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
 import MessageSection from "@/sections/MessageSection";
 import NutritionSection from "@/sections/NutritionSection";
 import FlavorSection from "@/sections/FlavorSection";
@@ -13,7 +12,7 @@ import FooterSection from "@/sections/FooterSection";
 import { useState, useEffect } from "react";
 import Preloader from "@/components/Preloader";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -23,13 +22,6 @@ export default function Home() {
     window.history.scrollRestoration = "manual";
     window.scrollTo(0, 0);
   }, []);
-
-  useGSAP(() => {
-    ScrollSmoother.create({
-      smooth: 3,
-      effects: true,
-    });
-  });
 
   return (
     <main>
