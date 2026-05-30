@@ -2,8 +2,7 @@ import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
-import { useMediaQuery } from "react-responsive";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 interface HeroSectionProps {
   onLoaded: () => void;
@@ -11,46 +10,14 @@ interface HeroSectionProps {
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onLoaded, triggerAnimation }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  
-  const isMobile = useMediaQuery({
-    query: "(max-width: 768px)",
-  });
-
-  const isTablet = useMediaQuery({
-    query: "(max-width: 1024px)",
-  });
-
   useEffect(() => {
     const timer = setTimeout(() => {
       console.log("HeroSection: Safety timeout triggered");
       onLoaded();
     }, 6000);
 
-    if (isTablet) {
-      clearTimeout(timer);
-      const imgTimer = setTimeout(onLoaded, 5000);
-      return () => clearTimeout(imgTimer);
-    }
-
-    const video = videoRef.current;
-    if (video) {
-      if (video.readyState >= 3) {
-        console.log("HeroSection: Video already loaded");
-        onLoaded();
-        clearTimeout(timer);
-      }
-    }
-
     return () => clearTimeout(timer);
-  }, [isTablet, onLoaded]);
-
-  useEffect(() => {
-    if (triggerAnimation && videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(err => console.log("Video play failed:", err));
-    }
-  }, [triggerAnimation]);
+  }, [onLoaded]);
 
   useGSAP(
     () => {
@@ -60,9 +27,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onLoaded, triggerAnimation })
         type: "chars",
       });
 
-    const tl = gsap.timeline({
-      delay: 1,
-    });
+    const tl = gsap.timeline();
 
       tl.to(".hero-content", {
         opacity: 1,
@@ -108,58 +73,37 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onLoaded, triggerAnimation })
 
   return (
     <section className="bg-main-bg">
-      <div className="hero-container">
-        {isTablet ? (
-          <>
-            {isMobile && (
-              <Image
-                src="/images/hero-bg.webp"
-                alt="hero-bg"
-                width={3000}
-                height={3000}
-                className="absolute bottom-40 size-full object-cover"
-                onLoad={() => {
-                  console.log("HeroSection: Mobile BG loaded");
-                  onLoaded();
-                }}
-              />
-            )}
-            <Image
-              src="/images/hero-img.webp"
-              alt="hero-img"
-              width={500}
-              height={500}
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 object-auto"
-              onLoad={() => {
-                if (!isMobile) {
-                  console.log("HeroSection: Tablet/Desktop Img loaded");
-                  onLoaded();
-                }
-              }}
-            />
-          </>
-        ) : (
-          <video
-            ref={videoRef}
-            src="/videos/herobg.mp4"
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-            onCanPlayThrough={() => {
-              console.log("HeroSection: Video can play through");
-              onLoaded();
-            }}
-            onLoadedData={() => {
-              console.log("HeroSection: Video data loaded");
-              onLoaded();
-            }}
+      <div className="hero-container !bg-[#2c1003]">
+        {/* Ambient Blurred Background for Desktop */}
+        <div className="absolute inset-0 z-0 hidden md:block">
+          <Image
+            src="/images/hero-bg-custom.jpg"
+            alt="hero-bg-ambient"
+            fill
+            quality={10}
+            unoptimized
+            priority
+            className="object-cover blur-[80px] opacity-60 scale-110"
           />
-        )}
-        <div className="hero-content opacity-0">
+        </div>
+
+        {/* Main Sharp Image */}
+        <Image
+          src="/images/hero-bg-custom.jpg"
+          alt="hero-bg"
+          fill
+          quality={100}
+          unoptimized
+          priority
+          className="md:object-contain object-cover relative z-[1]"
+          onLoad={() => {
+            console.log("HeroSection: Custom BG loaded");
+            onLoaded();
+          }}
+        />
+        <div className="hero-content opacity-0 relative z-10">
           <div className="overflow-hidden">
-            <h1 className="hero-title">Freaking Delicious</h1>
+            <h1 className="hero-title">susu sapi qurban</h1>
           </div>
           <div
             style={{
@@ -168,13 +112,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onLoaded, triggerAnimation })
             className="hero-text-scroll"
           >
             <div className="hero-subtitle">
-              <h1>Protein + Caffeine </h1>
+              <h1>rendah kalori enak </h1>
             </div>
           </div>
-          <h2>Live life to the fullest with SPYLT: Shatter boredom and embrace your inner kid with every deliciously smooth chug.</h2>
-          <div className="hero-button">
-            <p>Chug a SPYLT</p>
-          </div>
+          <h2 className="bg-white/70 backdrop-blur-md py-2 px-6 rounded-full shadow-xl border border-white/50">
+            ini susu enak parah mending lu cobain dah
+          </h2>
+          <a href="https://www.ultrajaya.co.id/products/ultra-milk-full-Cream/ind" target="_blank" rel="noopener noreferrer" className="hero-button inline-block hover:scale-105 transition-transform cursor-pointer">
+            <p>ultra milk</p>
+          </a>
         </div>
       </div>
     </section>

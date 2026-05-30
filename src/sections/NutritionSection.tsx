@@ -69,13 +69,13 @@ const NutritionSection = () => {
     <section className="nutrition-section">
       <Image src="/images/slider-dip.webp" width={2000} height={2000} alt="slider-dip" className="w-full object-cover" />
 
-      <Image src="/images/big-img.webp" width={3000} height={3000} alt="big-img" className="big-img" />
+      <img src="/images/brown-drink-new.jpg" alt="big-img" className="big-img" />
 
-      <div className="flex md:flex-row flex-col justify-between md:px-10 px-5 mt-14 md:mt-0">
+      <div className="relative z-10 flex md:flex-row flex-col justify-between md:px-10 px-5 mt-14 md:mt-0">
         <div className="relative inline-block md:translate-y-20">
           <div className="general-title relative flex flex-col justify-center items-center gap-24">
             <div className="overflow-hidden place-self-start">
-              <h1 className="nutrition-title">It still does</h1>
+              <h1 className="nutrition-title">membuat hari mu</h1>
             </div>
             <div
               style={{
@@ -84,7 +84,7 @@ const NutritionSection = () => {
               className="nutrition-text-scroll place-self-start"
             >
               <div className="bg-yellow-brown pb-5 md:pt-0 pt-3 md:px-5 px-3">
-                <h2 className="text-milk-yellow">Body Good</h2>
+                <h2 className="text-milk-yellow">menjadi semangat</h2>
               </div>
             </div>
           </div>
@@ -93,25 +93,26 @@ const NutritionSection = () => {
         <div className="flex md:justify-center items-center translate-y-5">
           <div className="md:max-w-xs max-w-md">
             <p className="text-lg md:text-right text-balance font-paragraph">
-              Milk contains a wide array of nutrients, including vitamins, minerals, and protein, and this is lactose free
+              Susu mengandung beragam nutrisi, termasuk vitamin, mineral, dan protein, dan susu ini bebas laktosa.
             </p>
           </div>
         </div>
 
-        <div className="nutrition-box">
-          <div className="list-wrapper">
-            {lists.map((nutrient, index) => (
-              <div key={index} className="relative flex-1 col-center">
-                <div>
-                  <p className="md:text-lg font-paragraph">{nutrient.label}</p>
-                  <p className="font-paragraph text-sm mt-2">up to</p>
-                  <p className="text-2xl md:text-4xl tracking-tighter font-bold">{nutrient.amount}</p>
-                </div>
+      </div>
 
-                {index !== lists.length - 1 && <div className="spacer-border" />}
+      <div className="nutrition-box">
+        <div className="list-wrapper">
+          {lists.map((nutrient, index) => (
+            <div key={index} className="relative flex-1 col-center">
+              <div>
+                <p className="md:text-lg font-paragraph">{nutrient.label}</p>
+                <p className="font-paragraph text-sm mt-2">hingga</p>
+                <p className="text-2xl md:text-4xl tracking-tighter font-bold">{nutrient.amount}</p>
               </div>
-            ))}
-          </div>
+
+              {index !== lists.length - 1 && <div className="spacer-border" />}
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -10,62 +10,48 @@ const FooterSection = () => {
     <footer className="footer-section">
       <Image src="/images/footer-dip.webp" alt="" width={3000} height={3000} className="w-full object-cover -translate-y-1" />
 
-      <div className="2xl:h-[110dvh] relative md:pt-[20vh] pt-[10vh]">
-        <div className="overflow-hidden z-10">
-          <h1 className="general-title text-center text-milk py-5">#CHUGRESPONSIBLY</h1>
+      <div className="min-h-[140dvh] relative flex flex-col pb-7">
+        <div className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full overflow-hidden">
+          <h1 className="text-5xl md:text-7xl 2xl:text-[7rem] font-bold uppercase tracking-tighter text-center text-black py-5">#ULTRAMILK</h1>
         </div>
 
         {isMobile ? (
-          <Image src="/images/footer-drink.webp" alt="" width={3000} height={3000} className="absolute top-0 object-contain" />
+          <Image src="/images/footer-drink.webp" alt="" width={3000} height={3000} className="absolute top-0 object-contain z-0" />
         ) : (
-          <video src="/videos/splash1.mp4" autoPlay playsInline muted className="absolute top-0 object-contain mix-blend-lighten" />
+          <video src="/videos/splash1.mp4" autoPlay playsInline muted loop className="absolute top-0 left-0 w-full h-full object-cover mix-blend-lighten z-0" />
         )}
 
-        <div className="flex-center gap-5 relative z-10 md:mt-20 mt-5">
-          <div className="social-btn">
-            <Image src="./images/yt.svg" alt="" width={50} height={50} />
-          </div>
-          <div className="social-btn">
-            <Image src="./images/insta.svg" alt="" width={50} height={50} />
-          </div>
-          <div className="social-btn">
-            <Image src="./images/tiktok.svg" alt="" width={50} height={50} />
-          </div>
-        </div>
 
-        <div className="mt-40 md:px-10 px-5 flex gap-10 md:flex-row flex-col justify-between text-milk font-paragraph md:text-lg font-medium">
-          <div className="flex items-center md:gap-16 gap-5">
-            <div>
-              <p>SPYLT Flavors</p>
+        <div className="mt-auto relative z-10 flex flex-col w-full md:px-10 px-5 mb-7 gap-5">
+          <div className="flex md:flex-row flex-col justify-between items-end w-full gap-5 md:gap-10">
+            <div className="flex justify-start gap-5 w-full">
+              <a href="https://github.com/ilhamsptr1" target="_blank" rel="noopener noreferrer" className="social-btn">
+                <Image src="/images/github.svg" alt="GitHub" width={50} height={50} />
+              </a>
+              <a href="https://www.instagram.com/ilhammsptra_/" target="_blank" rel="noopener noreferrer" className="social-btn">
+                <Image src="/images/insta.svg" alt="Instagram" width={50} height={50} />
+              </a>
+              <a href="https://www.tiktok.com/@ninetofive925" target="_blank" rel="noopener noreferrer" className="social-btn">
+                <Image src="/images/tiktok.svg" alt="TikTok" width={50} height={50} />
+              </a>
             </div>
-            <div>
-              <p>Chug Club</p>
-              <p>Student Marketing</p>
-              <p>Dairy Dealers</p>
-            </div>
-            <div>
-              <p>Company</p>
-              <p>Contacts</p>
-              <p>Tasty Talk</p>
+
+            <div className="md:max-w-lg w-full text-milk drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-paragraph font-bold">
+              <p className="text-xl">Dapatkan Akses Awal Eksklusif dan Jadilah yang Pertama Tahu Tentang Info Produk, Acara, dan Lainnya!</p>
             </div>
           </div>
 
-          <div className="md:max-w-lg">
-            <p>Get Exclusive Early Access and Stay Informed About Product Updates, Events, and More!</p>
-            <div className="flex justify-between items-center border-b border-[#D9D9D9] py-5 md:mt-10">
-              <input type="email" placeholder="Enter your email" className="w-full placeholder:font-sans placeholder:text-[#999999]" />
-              <Image src="/images/arrow.svg" alt="arrow" width={70} height={70} />
+          <div className="flex md:flex-row flex-col-reverse justify-between items-end w-full gap-5 md:gap-10">
+            <div className="w-full text-milk drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] md:text-lg font-paragraph font-bold text-left mb-2">
+              <p>Copyright © 2026 Ilham Saputra</p>
             </div>
-          </div>
-        </div>
-
-        <div className="copyright-box">
-          <p>
-            Cloned by <a href="https://ahmedragab.netlify.app" target="_blank">Ahmed Ragab</a> - Copyright © 2025 Spylt - All Rights Reserved
-          </p>
-          <div className="flex items-center gap-7">
-            <p>Privacy Policy</p>
-            <p>Terms of Service</p>
+            
+            <div className="md:max-w-lg w-full text-milk drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-paragraph font-bold">
+              <a href="https://wa.me/62895324017432" target="_blank" rel="noopener noreferrer" className="flex justify-between items-center border-b-2 border-milk pb-2 group cursor-pointer w-full">
+                <span className="bg-transparent text-milk font-sans font-bold drop-shadow-md text-2xl md:text-3xl opacity-90 group-hover:opacity-100 transition-opacity whitespace-nowrap">Hubungi WhatsApp</span>
+                <Image src="/images/whatsapp.svg" alt="WhatsApp" width={60} height={60} className="drop-shadow-lg group-hover:scale-110 transition-transform object-contain" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

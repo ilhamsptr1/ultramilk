@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <main>
       <Preloader isLoaded={isVideoLoaded} onFinish={() => setIsPreloaderDone(true)} />
-      <div className={!isPreloaderDone ? "h-screen overflow-hidden opacity-0" : "opacity-100 transition-opacity duration-500"}>
+      <div className={!isPreloaderDone ? "h-screen overflow-hidden" : ""}>
         <Navbar />
         <div id="smooth-wrapper">
           <div id="smooth-content">

@@ -15,7 +15,7 @@ const TestimonialSection = () => {
       scrollTrigger: {
         trigger: ".testimonials-section",
         start: "top bottom",
-        end: "200% top",
+        end: "150% top",
         scrub: true,
       },
     });
@@ -42,7 +42,7 @@ const TestimonialSection = () => {
       scrollTrigger: {
         trigger: ".testimonials-section",
         start: "10% top",
-        end: "200% top",
+        end: "150% top",
         scrub: 1.5,
         pin: true,
       },
@@ -67,10 +67,10 @@ const TestimonialSection = () => {
 
   return (
     <section className="testimonials-section">
-      <div className="absolute size-full flex flex-col items-center pt-[5vw]">
-        <h1 className="text-black first-title">What&apos;s</h1>
-        <h1 className="text-light-brown sec-title">Everyone</h1>
-        <h1 className="text-black third-title">Talking</h1>
+      <div className="absolute size-full flex flex-col items-center justify-center z-20 pointer-events-none">
+        <h1 className="text-black first-title">kumpulan</h1>
+        <h1 className="text-light-brown sec-title">hewan</h1>
+        <h1 className="text-black third-title" style={{ WebkitTextStroke: '2px rgba(0,0,0,0.3)' }}>purba</h1>
       </div>
 
       <div className="pin-box">

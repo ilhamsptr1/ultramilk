@@ -27,11 +27,10 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #faeade;
-  color: #523122;
+  background: linear-gradient(135deg, #ffefd5, #ffe1f0);
+  color: #333333;
   font-family: "Antonio", sans-serif;
   overflow-x: hidden;
-  scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
 }
@@ -93,7 +92,7 @@ body::-webkit-scrollbar {
   }
 
   .message-content {
-    @apply bg-[#7f3b2d] text-milk min-h-dvh overflow-hidden flex justify-center items-center relative z-20;
+    @apply bg-[#7f3b2d] text-milk overflow-hidden flex justify-center items-center relative z-20;
 
     .msg-wrapper {
       @apply 2xl:text-[8.5rem] md:text-8xl text-5xl font-bold uppercase leading-[9vw] tracking-[-.35vw] flex flex-col justify-center items-center md:gap-24 gap-14;
@@ -161,7 +160,9 @@ body::-webkit-scrollbar {
     @apply min-h-dvh 2xl:h-[120dvh] overflow-hidden relative;
 
     .big-img {
-      @apply w-full absolute 2xl:h-full md:h-2/3 h-1/2 left-0 bottom-0 object-bottom 2xl:object-contain object-cover;
+      @apply w-full absolute 2xl:h-full md:h-[85%] h-[60%] left-0 bottom-0 object-cover z-0;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
     }
 
     .nutrition-title {
@@ -173,7 +174,7 @@ body::-webkit-scrollbar {
     }
 
     .nutrition-box {
-      @apply absolute md:bottom-16 bottom-5 w-full md:px-0 px-5;
+      @apply absolute md:bottom-16 bottom-5 w-full md:px-0 px-5 z-10;
 
       .list-wrapper {
         @apply bg-[#fdebd2] rounded-full border-[.5vw] border-[#e8ddca] mx-auto max-w-7xl md:py-8 py-5 md:px-0 px-5 flex justify-between items-center;
@@ -241,7 +242,7 @@ body::-webkit-scrollbar {
     }
 
     h1 {
-      @apply uppercase text-[20.5vw] leading-[105%] tracking-[-.4vw] ml-[2vw] font-bold;
+      @apply uppercase text-[20.5vw] leading-[85%] tracking-[-.4vw] ml-[2vw] font-bold;
     }
   }
 
@@ -249,7 +250,7 @@ body::-webkit-scrollbar {
     @apply 2xl:min-h-dvh overflow-hidden relative bg-[#222123];
 
     .social-btn {
-      @apply border border-[#faeade33] md:size-[5vw] size-14 md:p-0 p-3 flex justify-center items-center rounded-full hover:bg-[#ffffff1a] transition-colors cursor-pointer;
+      @apply border-2 border-milk bg-black/30 backdrop-blur-md md:size-[5vw] size-14 md:p-0 p-3 flex justify-center items-center rounded-full hover:bg-black/50 transition-colors cursor-pointer;
     }
 
     input {
@@ -257,7 +258,7 @@ body::-webkit-scrollbar {
     }
 
     .copyright-box {
-      @apply 2xl:absolute w-full md:px-10 px-5 py-7 bottom-0 text-milk opacity-50 md:text-lg font-paragraph flex gap-7 md:flex-row flex-col-reverse md:justify-between justify-center items-center;
+      @apply mt-auto relative z-10 w-full md:px-10 px-5 py-7 text-milk drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] md:text-lg font-paragraph flex gap-7 md:flex-row flex-col-reverse md:justify-between justify-center items-center font-bold;
 
       p {
         @apply text-center;
