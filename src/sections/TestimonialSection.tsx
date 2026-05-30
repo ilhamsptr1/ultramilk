@@ -127,7 +127,7 @@ const TestimonialSection = () => {
                   if (el) vdRef.current[index] = el;
                 }}
                 src={getAssetPath(cardItem.src)}
-                preload="none"
+                preload="metadata"
                 playsInline
                 muted
                 loop

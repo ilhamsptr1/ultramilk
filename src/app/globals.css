@@ -237,7 +237,7 @@ body::-webkit-scrollbar {
       @apply flex items-center justify-center w-full md:ps-52 ps-10 absolute 2xl:bottom-32 md:bottom-[20vh] bottom-[15vh];
 
       .vd-card {
-        @apply md:w-96 w-[60vw] flex-none md:rounded-[2vw] rounded-3xl md:-ms-44 -ms-[35vw] overflow-hidden relative border-[.5vw] border-milk;
+        @apply md:w-96 w-[60vw] aspect-[9/16] flex-none md:rounded-[2vw] rounded-3xl md:-ms-44 -ms-[35vw] overflow-hidden relative border-[.5vw] border-milk;
       }
     }
 

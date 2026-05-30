@@ -42,7 +42,7 @@ const VideoPinSection = () => {
     <section className="vd-pin-section" ref={sectionRef}>
       <div className="size-full video-box max-md:[clip-path:circle(100%_at_50%_50%)] md:[clip-path:circle(6%_at_50%_50%)]">
         {isVisible ? (
-          <video src={getAssetPath("/videos/20260510_232032.mp4")} preload="none" playsInline muted loop autoPlay className="size-full object-cover" />
+          <video src={getAssetPath("/videos/20260510_232032.mp4")} preload="metadata" playsInline muted loop autoPlay className="size-full object-cover" />
         ) : (
           <div className="size-full bg-black" />
         )}
