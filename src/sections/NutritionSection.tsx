@@ -1,3 +1,4 @@
+import { getAssetPath } from "@/utils/paths";
 import { useMediaQuery } from "react-responsive";
 import { nutrientList } from "../constants";
 import { useEffect, useState } from "react";

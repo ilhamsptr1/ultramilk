@@ -1,3 +1,4 @@
+import { getAssetPath } from "@/utils/paths";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
 

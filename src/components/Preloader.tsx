@@ -1,4 +1,5 @@
 "use client";
+import { getAssetPath } from "@/utils/paths";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";

@@ -1,3 +1,4 @@
+import { getAssetPath } from "@/utils/paths";
 import { useGSAP } from "@gsap/react";
 import { flavorList } from "../constants";
 import gsap from "gsap";

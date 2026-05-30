@@ -1,3 +1,4 @@
+import { getAssetPath } from "@/utils/paths";
 import Image from "next/image";
 import React from "react";
 
