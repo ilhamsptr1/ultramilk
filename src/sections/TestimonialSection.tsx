@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { card } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -6,6 +6,39 @@ import { getAssetPath } from "@/utils/paths";
 
 const TestimonialSection = () => {
   const vdRef = useRef<HTMLVideoElement[]>([]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Lazy load videos only when section is near viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px 0px" }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Show fewer cards on mobile to reduce memory usage
+  const visibleCards = isMobile ? card.slice(0, 3) : card;
 
   useGSAP(() => {
     gsap.set(".testimonials-section", {
@@ -56,18 +89,33 @@ const TestimonialSection = () => {
     });
   });
 
-  const handlePlay = (index: number) => {
+  const handlePlay = useCallback((index: number) => {
     const video = vdRef.current[index];
-    video.play();
-  };
+    if (video && video.readyState >= 2) {
+      video.play().catch(() => {});
+    }
+  }, []);
 
-  const handlePause = (index: number) => {
+  const handlePause = useCallback((index: number) => {
     const video = vdRef.current[index];
-    video.pause();
-  };
+    if (video) {
+      video.pause();
+    }
+  }, []);
+
+  // Toggle play/pause on tap for mobile
+  const handleTap = useCallback((index: number) => {
+    const video = vdRef.current[index];
+    if (!video) return;
+    if (video.paused) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, []);
 
   return (
-    <section className="testimonials-section">
+    <section className="testimonials-section" ref={sectionRef}>
       <div className="absolute size-full flex flex-col items-center justify-center z-20 pointer-events-none">
         <h1 className="text-black first-title">kumpulan</h1>
         <h1 className="text-light-brown sec-title">hewan</h1>
@@ -75,23 +123,29 @@ const TestimonialSection = () => {
       </div>
 
       <div className="pin-box">
-        {card.map((card, index) => (
+        {visibleCards.map((cardItem, index) => (
           <div
             key={index}
-            className={`vd-card ${card.translation} ${card.rotation}`}
+            className={`vd-card ${cardItem.translation || ""} ${cardItem.rotation}`}
             onMouseEnter={() => handlePlay(index)}
             onMouseLeave={() => handlePause(index)}
+            onClick={() => isMobile && handleTap(index)}
           >
-            <video
-              ref={(el) => {
-                if (el) vdRef.current[index] = el;
-              }}
-              src={getAssetPath(card.src)}
-              playsInline
-              muted
-              loop
-              className="size-full object-cover"
-            />
+            {isVisible ? (
+              <video
+                ref={(el) => {
+                  if (el) vdRef.current[index] = el;
+                }}
+                src={getAssetPath(cardItem.src)}
+                preload="none"
+                playsInline
+                muted
+                loop
+                className="size-full object-cover"
+              />
+            ) : (
+              <div className="size-full bg-milk" />
+            )}
           </div>
         ))}
       </div>
