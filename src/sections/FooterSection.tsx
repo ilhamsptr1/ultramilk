@@ -1,12 +1,7 @@
 import { getAssetPath } from "@/utils/paths";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
 
 const FooterSection = () => {
-  const isMobile = useMediaQuery({
-    query: "(max-width: 768px)",
-  });
-
   return (
     <footer className="footer-section">
       <Image src={getAssetPath("/images/footer-dip.webp")} alt="" width={3000} height={3000} className="w-full object-cover -translate-y-1" />
@@ -16,11 +11,11 @@ const FooterSection = () => {
           <h1 className="text-5xl md:text-7xl 2xl:text-[7rem] font-bold uppercase tracking-tighter text-center text-black py-5">#ULTRAMILK</h1>
         </div>
 
-        {isMobile ? (
-          <Image src={getAssetPath("/images/footer-drink.webp")} alt="" width={3000} height={3000} className="absolute top-0 object-contain z-0" />
-        ) : (
-          <video src={getAssetPath("/videos/splash1.mp4")} autoPlay playsInline muted loop className="absolute top-0 left-0 w-full h-full object-cover mix-blend-lighten z-0" />
-        )}
+        {/* Mobile version */}
+        <Image src={getAssetPath("/images/footer-drink.webp")} alt="" width={3000} height={3000} className="absolute top-0 object-contain z-0 block md:hidden" />
+        
+        {/* Desktop version */}
+        <video src={getAssetPath("/videos/splash1.mp4")} autoPlay playsInline muted loop className="absolute top-0 left-0 w-full h-full object-cover mix-blend-lighten z-0 hidden md:block" />
 
 
         <div className="mt-auto relative z-10 flex flex-col w-full md:px-10 px-5 mb-7 gap-5">
