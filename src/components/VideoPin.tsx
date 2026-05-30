@@ -8,26 +8,16 @@ const VideoPinSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  // Lazy load video only when section is near viewport
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "300px 0px" }
-    );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   useGSAP(() => {
+    gsap.ScrollTrigger.create({
+      trigger: ".vd-pin-section",
+      start: "top 200%",
+      onEnter: () => setIsVisible(true),
+      once: true,
+    });
+
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 768px)", () => {

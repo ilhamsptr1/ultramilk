@@ -18,24 +18,7 @@ const TestimonialSection = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Lazy load videos only when section is near viewport
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "200px 0px" }
-    );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   // Show fewer cards on mobile to reduce memory usage
   const visibleCards = isMobile ? card.slice(0, 3) : card;
@@ -43,6 +26,13 @@ const TestimonialSection = () => {
   useGSAP(() => {
     gsap.set(".testimonials-section", {
       marginTop: "-140vh",
+    });
+
+    gsap.ScrollTrigger.create({
+      trigger: ".testimonials-section",
+      start: "top 200%",
+      onEnter: () => setIsVisible(true),
+      once: true,
     });
 
     const tl = gsap.timeline({
