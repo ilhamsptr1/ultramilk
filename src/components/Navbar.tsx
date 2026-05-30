@@ -4,7 +4,7 @@ import React from "react";
 const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 z-50 p-3 md:p-9 mix-blend-multiply">
-      <Image width={80} height={80} src="/images/ultra-milk-logo.jpg" alt="nav-logo" className="w-20 md:w-24" />
+      <Image width={80} height={80} src={getAssetPath("/images/ultra-milk-logo.jpg")} alt="nav-logo" className="w-20 md:w-24" />
     </nav>
   );
 };

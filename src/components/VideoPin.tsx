@@ -35,12 +35,12 @@ const VideoPinSection = () => {
         }}
         className="size-full video-box"
       >
-        <video src="\videos\20260510_232032.mp4" playsInline muted loop autoPlay className="size-full object-cover" />
+        <video src={getAssetPath("/videos/20260510_232032.mp4")} playsInline muted loop autoPlay className="size-full object-cover" />
 
         <div className="abs-center md:scale-100 scale-200">
-          <Image src="/images/circle-text.svg" alt="" width={500} height={500} className="spin-circle" />
+          <Image src={getAssetPath("/images/circle-text.svg")} alt="" width={500} height={500} className="spin-circle" />
           <div className="play-btn">
-            <Image src="/images/play.svg" alt="" width={500} height={500} className="size-[3vw] ml-[.5vw]" />
+            <Image src={getAssetPath("/images/play.svg")} alt="" width={500} height={500} className="size-[3vw] ml-[.5vw]" />
           </div>
         </div>
       </div>

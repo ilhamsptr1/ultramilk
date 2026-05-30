@@ -67,9 +67,9 @@ const NutritionSection = () => {
 
   return (
     <section className="nutrition-section">
-      <Image src="/images/slider-dip.webp" width={2000} height={2000} alt="slider-dip" className="w-full object-cover" />
+      <Image src={getAssetPath("/images/slider-dip.webp")} width={2000} height={2000} alt="slider-dip" className="w-full object-cover" />
 
-      <img src="/images/brown-drink-new.jpg" alt="big-img" className="big-img" />
+      <img src={getAssetPath("/images/brown-drink-new.jpg")} alt="big-img" className="big-img" />
 
       <div className="relative z-10 flex md:flex-row flex-col justify-between md:px-10 px-5 mt-14 md:mt-0">
         <div className="relative inline-block md:translate-y-20">

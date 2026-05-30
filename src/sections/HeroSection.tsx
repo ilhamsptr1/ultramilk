@@ -77,7 +77,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onLoaded, triggerAnimation })
         {/* Ambient Blurred Background for Desktop */}
         <div className="absolute inset-0 z-0 hidden md:block">
           <Image
-            src="/images/hero-bg-custom.jpg"
+            src={getAssetPath("/images/hero-bg-custom.jpg")}
             alt="hero-bg-ambient"
             fill
             quality={10}
@@ -89,7 +89,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onLoaded, triggerAnimation })
 
         {/* Main Sharp Image */}
         <Image
-          src="/images/hero-bg-custom.jpg"
+          src={getAssetPath("/images/hero-bg-custom.jpg")}
           alt="hero-bg"
           fill
           quality={100}
