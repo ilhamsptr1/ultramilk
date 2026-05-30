@@ -8,11 +8,11 @@ const FooterSection = () => {
 
       <div className="min-h-[140dvh] relative flex flex-col pb-7">
         <div className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full overflow-hidden">
-          <h1 className="text-5xl md:text-7xl 2xl:text-[7rem] font-bold uppercase tracking-tighter text-center text-black py-5">#ULTRAMILK</h1>
+          <h1 className="text-5xl md:text-7xl 2xl:text-[7rem] font-bold uppercase tracking-tighter text-center text-milk/20 md:text-black md:opacity-100 py-5">#ULTRAMILK</h1>
         </div>
 
         {/* Mobile version */}
-        <Image src={getAssetPath("/images/footer-drink.webp")} alt="" width={3000} height={3000} className="absolute top-0 object-contain z-0 block md:hidden" />
+        <Image src={getAssetPath("/images/footer-drink.webp")} alt="" width={3000} height={3000} className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] object-contain z-0 block md:hidden drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" />
         
         {/* Desktop version */}
         <video src={getAssetPath("/videos/splash1.mp4")} autoPlay playsInline muted loop className="absolute top-0 left-0 w-full h-full object-cover mix-blend-lighten z-0 hidden md:block" />
