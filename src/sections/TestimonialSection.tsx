@@ -28,7 +28,8 @@ const TestimonialSection = () => {
       marginTop: "-140vh",
     });
 
-    (gsap as any).ScrollTrigger.create({
+    // @ts-expect-error: ScrollTrigger is not properly typed on the gsap object
+    gsap.ScrollTrigger.create({
       trigger: ".testimonials-section",
       start: "top 200%",
       onEnter: () => setIsVisible(true),

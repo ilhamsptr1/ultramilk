@@ -2,7 +2,7 @@ import { getAssetPath } from "@/utils/paths";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 
 const VideoPinSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -11,7 +11,8 @@ const VideoPinSection = () => {
 
 
   useGSAP(() => {
-    (gsap as any).ScrollTrigger.create({
+    // @ts-expect-error: ScrollTrigger is not properly typed on the gsap object
+    gsap.ScrollTrigger.create({
       trigger: ".vd-pin-section",
       start: "top 200%",
       onEnter: () => setIsVisible(true),
