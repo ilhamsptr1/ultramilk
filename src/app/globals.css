@@ -237,7 +237,7 @@ body::-webkit-scrollbar {
       @apply flex items-center justify-center w-full md:ps-52 ps-10 absolute 2xl:bottom-32 md:bottom-[20vh] bottom-[15vh];
 
       .vd-card {
-        @apply md:w-96 w-[60vw] flex-none md:rounded-[2vw] rounded-3xl md:-ms-44 -ms-[35vw] overflow-hidden relative border-[.5vw] border-milk shadow-xl;
+        @apply md:w-96 w-[60vw] flex-none md:rounded-[2vw] rounded-3xl md:-ms-44 -ms-[35vw] overflow-hidden relative border-[.5vw] border-milk;
       }
     }
 
@@ -247,7 +247,7 @@ body::-webkit-scrollbar {
   }
 
   .footer-section {
-    @apply 2xl:min-h-dvh overflow-hidden relative bg-[#222123];
+    @apply 2xl:min-h-dvh overflow-hidden relative bg-black;
 
     .social-btn {
       @apply border-2 border-milk bg-black/30 backdrop-blur-md md:size-[5vw] size-14 md:p-0 p-3 flex justify-center items-center rounded-full hover:bg-black/50 transition-colors cursor-pointer;

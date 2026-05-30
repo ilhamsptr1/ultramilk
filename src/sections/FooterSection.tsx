@@ -11,7 +11,7 @@ const FooterSection = () => {
           <h1 className="text-5xl md:text-7xl 2xl:text-[7rem] font-bold uppercase tracking-tighter text-center text-black py-5">#ULTRAMILK</h1>
         </div>
 
-        <video src={getAssetPath("/videos/splash1.mp4")} autoPlay playsInline muted loop className="absolute top-0 left-0 w-full h-full object-cover mix-blend-lighten z-0" />
+        <video src={getAssetPath("/videos/splash1.mp4")} autoPlay playsInline muted loop className="absolute top-0 left-0 w-full h-full object-cover z-0" />
 
         <div className="mt-auto relative z-10 flex flex-col w-full md:px-10 px-5 mb-7 gap-5">
           <div className="flex md:flex-row flex-col justify-between items-end w-full gap-5 md:gap-10">
